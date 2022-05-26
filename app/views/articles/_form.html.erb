@@ -18,6 +18,9 @@
   </div>
 
   <div>
+    <% article.errors.full_messages_for(:category_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
     <%= form.submit %>
   </div>
 <% end %>
