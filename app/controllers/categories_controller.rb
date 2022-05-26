@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   # NOTE: csrfの無効化
-  skip_forgery_protection with: :exception, only: :create
+  skip_forgery_protection with: :exception, only: [:create, :destroy]
 
   def index
     @categories = Category.all
@@ -26,6 +26,12 @@ class CategoriesController < ApplicationController
         } }
       end
     end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to categories_path, status: 303
   end
 
   private
