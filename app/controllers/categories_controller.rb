@@ -4,11 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-    respond_to do |format|
-      format.any { render json: {
-        :categories => @categories
-      } }
-    end
+    json_response @categories
   end
 
   def create
